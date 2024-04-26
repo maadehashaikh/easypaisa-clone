@@ -43,3 +43,6 @@ async function displaySelectedChoice() {
     }
 }
 displaySelectedChoice();
+
+
+console.log ("Its my easy paisa app ")
