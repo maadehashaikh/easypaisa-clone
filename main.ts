@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 async function displaySelectedChoice() {
-    const choices = ['Money Transfer', 'Bill Payment', 'EasyLoad Bundles', 'Cash Back', 'Savings','Send Money'];
+    const choices = ['Money Transfer', 'Bill Payment', 'EasyLoad Bundles','Cash Back', 'Savings'];
     let totalBalance = 20000;
     // bill mai account num day kay paisay -
     // bundles mai choices say deduct kar skty hain amount
@@ -22,8 +22,9 @@ async function displaySelectedChoice() {
       )
       let transferMoney = money_transfer_amount.amount;
       let remaining_balance = totalBalance - transferMoney;
-      console.log(`Your total balance was ${totalBalance} and now you have ${remaining_balance} amount of money remain`);
+      console.log(`Your total balance was ${totalBalance} and now you have ${remaining_balance} amount of money remaining`);
       totalBalance = remaining_balance;
+      console.log(totalBalance);
     }
 
     if(answer.selectedChoice == "Bill Payment"){
@@ -40,9 +41,50 @@ async function displaySelectedChoice() {
       let remaining_amount = totalBalance - (bill_Payment_amount.bill_amount); 
       console.log(`You have paid bill of ${bill_Payment_amount.bill_amount}RS and remaining amount in your account is : ${remaining_amount}`);
       totalBalance = remaining_amount;
+      console.log(totalBalance);
+    }
+    if(answer.selectedChoice == "EasyLoad Bundles"){
+      console.log("We have a 'Flash Sale' of 10% on Every Bundle just grab and save money !!!!")
+        const bundle_choices = ["weekly bundles : 200RS","monthly bundles:550RS","daily bundles:120RS","super card:1000RS",
+        "All in one deal:2300RS","call bundles:600RS"];
+        const selected_bundle = await inquirer.prompt({
+          type: 'list',
+          name: 'bundle',
+          message: 'Select any Bundle :',
+          choices: bundle_choices
+      });
+      console.log(selected_bundle.bundle);
+      if(selected_bundle.bundle == "weekly bundles : 200RS"){
+       totalBalance-=200;
+       console.log(`Now your total balance left is :${totalBalance}`);
+      }
+      else if(selected_bundle.bundle == "monthly bundles:550RS"){
+        totalBalance-=550;
+        console.log(`Now your total balance left is :${totalBalance}`);
+       }
+       else if(selected_bundle.bundle == "daily bundles:120RS"){
+        totalBalance-=120;
+        console.log(`Now your total balance left is :${totalBalance}`);
+       }
+       else if(selected_bundle.bundle == "super card:1000RS"){
+        totalBalance-=1000;
+        console.log(`Now your total balance left is :${totalBalance}`);
+       }
+       else if(selected_bundle.bundle == "All in one deal:2300RS"){
+        totalBalance-=2300;
+        console.log(`Now your total balance left is :${totalBalance}`);
+       }
+       else if(selected_bundle.bundle == "call bundles:600RS"){
+        totalBalance-=600;
+        console.log(`Now your total balance left is :${totalBalance}`);
+       }
+       else{
+        console.log("Invalid Choice");
+       }
+    }
+    if(answer.selectedChoice == "Cash Back"){
+     
     }
 }
+
 displaySelectedChoice();
-
-
-console.log ("Its my easy paisa app ")
