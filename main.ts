@@ -1,10 +1,11 @@
 import inquirer from 'inquirer';
 async function displaySelectedChoice() {
   let exit = true;
+  let totalBalance = 20000;
+  var save_amount:number = 0;
     while(exit){
       const choices = ['Money Transfer', 'Bill Payment','EasyLoad Bundles','Cash Back','Savings' ,'Exit'];
-    let totalBalance = 20000;
-    var save_amount = 0;
+    
     const answer = await inquirer.prompt({
         type: 'list',
         name: 'selectedChoice',
@@ -57,7 +58,8 @@ async function displaySelectedChoice() {
        console.log(`You have saved RS ${calc_percentage1} on sale `);
        totalBalance+=calc_percentage1;
        console.log(`Now your total balance left is :${totalBalance}`);
-       save_amount+=calc_percentage1;
+       save_amount +=calc_percentage1;
+       console.log(save_amount);
       }
       else if(selected_bundle.bundle == "monthly bundles:550RS"){
         totalBalance-=550;
