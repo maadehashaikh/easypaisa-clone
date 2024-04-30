@@ -116,5 +116,4 @@ async function displaySelectedChoice() {
     }
     }
 }
-
 displaySelectedChoice();
